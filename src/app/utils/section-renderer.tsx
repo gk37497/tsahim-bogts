@@ -18,7 +18,11 @@ export function sectionRenderer(section: any, index: number) {
     case "sections.lead-form":
       return <Email key={index} data={section} />;
     case "sections.rich-text":
-      return <RichText key={index} data={section} />
+      return (
+        <div key={index} className="px-5">
+          <RichText data={section} />
+        </div>
+      );
     default:
       return null;
   }
