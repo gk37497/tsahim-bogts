@@ -1,3 +1,5 @@
+import parseString from 'xml2js';
+
 export function getStrapiURL(path = '') {
     return `${process.env.NEXT_PUBLIC_STRAPI_API_URL || 'http://localhost:1337'}${path}`;
 }
@@ -24,3 +26,16 @@ export function formatDate(dateString: string) {
 
 // ADDS DELAY TO SIMULATE SLOW API REMOVE FOR PRODUCTION
 export const delay = (time: number) => new Promise((resolve) => setTimeout(() => resolve(1), time));
+
+
+export const convertXmlToJson = (xmlData:string) => {
+    return new Promise((resolve, reject) => {
+        parseString.parseString(xmlData, (err, result) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(result);
+            }
+        });
+    });
+}
