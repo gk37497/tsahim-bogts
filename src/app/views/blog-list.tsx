@@ -122,6 +122,12 @@ function ArticleCard({ article }: { article: Article }) {
           {article.attributes.title}
         </h3>
 
+        <div className="py-1">
+          <span className="rounded-md py-1 bg-gray-200 px-1 text-sm shadow-md">
+            {category.name}
+          </span>
+        </div>
+
         <div className="flex justify-between items-center">
           <span className="text-xs dark:text-gray-400">
             {formatDate(article.attributes.publishedAt)}
@@ -155,7 +161,9 @@ function ArticleCardBig({
     <Link
       href={`/news/${category?.slug}/${article.attributes.slug}`}
       key={article.id}
-      className={`hover:no-underline overflow-hidden focus:no-underline rounded-lg shadow-lg flex flex-row w-full ${index===0 && 'lg:h-[500px]'}`}
+      className={`hover:no-underline overflow-hidden focus:no-underline rounded-lg shadow-lg flex flex-row w-full ${
+        index === 0 && "lg:h-[500px]"
+      }`}
     >
       <div className="w-3/5 relative">
         {imageUrl && (
@@ -172,6 +180,12 @@ function ArticleCardBig({
         <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">
           {article.attributes.title}
         </h3>
+
+        <div className="py-1">
+          <span className="rounded-md py-1 bg-gray-200 px-1 text-sm shadow-md">
+            {category.name}
+          </span>
+        </div>
 
         <div className="flex justify-between items-center">
           <span className="text-xs dark:text-gray-400">
