@@ -19,7 +19,7 @@ export function sectionRenderer(section: any, index: number) {
       return <Email key={index} data={section} />;
     case "sections.rich-text":
       return (
-        <div key={index} className="px-5">
+        <div key={index} className="px-5 max-w-md mx-auto">
           <RichText data={section} />
         </div>
       );
