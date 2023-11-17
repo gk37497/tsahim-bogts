@@ -49,6 +49,15 @@ export async function generateMetadata({ params } : { params: {lang: string}}): 
     icons: {
       icon: [new URL(url, getStrapiURL())],
     },
+    appleWebApp: {
+      title: 'Tsahim Bogts',
+      statusBarStyle: 'black-translucent',
+    },
+    viewport: {
+      width: 'device-width',
+      initialScale: 1,
+      maximumScale: 1,
+    },
   };
 }
 
