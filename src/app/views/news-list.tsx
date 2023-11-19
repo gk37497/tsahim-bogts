@@ -74,7 +74,7 @@ function ArticleCard({ article }: { article: Article }) {
     <Link
       href={`/news/${category?.slug}/${article.attributes.slug}`}
       key={article.id}
-      className="w-full group hover:no-underline focus:no-underline bg-white rounded-sm overflow-hidden shadow-md hover:bg-gray-100 duration-200 flex flex-col md:flex-row"
+      className="w-full group hover:no-underline focus:no-underline bg-white rounded-sm overflow-hidden shadow-md md:shadow-none hover:bg-gray-100 duration-200 flex flex-col md:flex-row"
     >
       {imageUrl && (
         <Image
