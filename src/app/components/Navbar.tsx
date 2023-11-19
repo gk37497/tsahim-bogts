@@ -79,7 +79,12 @@ export default function Navbar({
           <ul className="items-stretch hidden space-x-3 lg:flex">
             {links.map((item: NavLink, i) => {
               if (i === 2) {
-                return <NavbarDropDownMenu key={i} />;
+                return (
+                  <>
+                    <NavbarDropDownMenu key={i} />
+                    <NavLink key={item.id} {...item} />
+                  </>
+                );
               }
               return <NavLink key={item.id} {...item} />;
             })}
