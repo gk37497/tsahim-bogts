@@ -40,7 +40,7 @@ export default function ForecastView({ forecasts }: Forecasts) {
     <div className="flex flex-col space-y-5 container mx-auto px-2">
       <PageHeader heading={selectedCity} />
 
-      <div className="block md:hidden w-full">
+      <div className="flex md:hidden w-full">
         <CityNames cityNames={cityNames} onChange={handleOnChange} />
       </div>
 
