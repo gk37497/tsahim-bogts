@@ -74,36 +74,43 @@ function ArticleCard({ article }: { article: Article }) {
     <Link
       href={`/news/${category?.slug}/${article.attributes.slug}`}
       key={article.id}
-      className="w-full group hover:no-underline focus:no-underline bg-white rounded-sm overflow-hidden shadow-md md:shadow-none hover:bg-gray-100 duration-200 flex flex-col md:flex-row"
+      className="w-full group hover:no-underline h-32 md:h-auto focus:no-underline bg-white rounded-sm overflow-hidden shadow-md md:shadow-none hover:bg-gray-100 duration-200 flex flex-row"
     >
       {imageUrl && (
-        <Image
-          alt="presentation"
-          width="240"
-          height="240"
-          className="object-contain group-hover:scale-105 group-focus:scale-105 duration-200 rounded-sm"
-          src={imageUrl}
-        />
+        <div>
+          <div className="relative h-32 w-32 md:h-52 md:w-52 rounded-sm">
+            <Image
+              fill
+              alt="presentation"
+              className="object-fill group-hover:scale-105 group-focus:scale-105 duration-200 rounded-sm"
+              src={imageUrl}
+            />
+          </div>
+        </div>
       )}
       <div className="p-6 space-y-2 relative">
-        <h3 className="text-xl font-semibold group-hover:underline group-focus:underline duration-200">
+        <h3 className="md:text-xl font-semibold group-hover:underline group-focus:underline duration-200">
           {article.attributes.title}
         </h3>
 
-        <div className="py-1">
+        <div className="py-1 hidden md:block">
           <span className="rounded-md py-1 bg-gray-200 px-1 text-sm shadow-md">
             {category.name}
           </span>
         </div>
 
         {authorsBio && (
-          <div className="text-xs dark:text-gray-400">{authorsBio.name}</div>
+          <div className="text-xs dark:text-gray-400 hidden md:block">
+            {authorsBio.name}
+          </div>
         )}
-        <span className="text-xs dark:text-gray-400">
+        <span className="text-xs text-gray-400">
           {formatDate(article.attributes.publishedAt)}
         </span>
 
-        <p className="py-2 text-sm">{article.attributes.description}</p>
+        <p className="py-2 text-sm hidden md:block">
+          {article.attributes.description}
+        </p>
       </div>
     </Link>
   );

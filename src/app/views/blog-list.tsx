@@ -2,11 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getStrapiMedia, formatDate } from "../utils/api-helpers";
 import PageHeader from "../components/PageHeader";
-import {
-  ArrowDownLeftIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-} from "@heroicons/react/24/outline";
+import { ChevronRightIcon } from "@heroicons/react/24/outline";
 
 interface Article {
   id: number;
