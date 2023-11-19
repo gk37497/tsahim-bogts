@@ -53,7 +53,7 @@ export default function ArticleSelect({
                   params.category
                 )} mb-2 mr-2`}
               >
-                #{category.attributes.name}asd
+                #{category.attributes.name}
               </Link>
             );
           })}
