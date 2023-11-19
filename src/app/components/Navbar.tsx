@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
+import NavbarDropDownMenu, { additionalLinks } from "./NavbarDropDownMenu";
 
 interface NavLink {
   id: number;
@@ -24,7 +25,7 @@ function NavLink({ url, text }: NavLink) {
     <li className="flex">
       <Link
         href={url}
-        className={`flex items-center font-semibold mx-4 -mb-1 border-b-2 dark:border-transparent ${
+        className={`flex items-center text-sm font-semibold mx-1 ${
           path === url && "dark:text-[#0245A3] dark:border-[#0245A3]"
         }}`}
       >
@@ -68,17 +69,20 @@ export default function Navbar({
     setMobileMenuOpen(false);
   };
   return (
-    <div className="py-4 text-gray-900 max-w-6xl mx-auto">
+    <div className="py-4 text-gray-900 max-w-8xl mx-auto">
       <div className="container flex justify-between h-16 mx-auto px-0">
         <Logo src={logoUrl}>
-          {logoText && <h2 className="text-2xl font-bold">{logoText}</h2>}
+          {logoText && <h2 className="text-xl font-bold">{logoText}</h2>}
         </Logo>
 
         <div className="items-center flex-shrink-0 hidden lg:flex">
           <ul className="items-stretch hidden space-x-3 lg:flex">
-            {links.map((item: NavLink) => (
-              <NavLink key={item.id} {...item} />
-            ))}
+            {links.map((item: NavLink, i) => {
+              if (i === 2) {
+                return <NavbarDropDownMenu key={i} />;
+              }
+              return <NavLink key={item.id} {...item} />;
+            })}
           </ul>
         </div>
 
@@ -101,7 +105,10 @@ export default function Navbar({
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <span className="sr-only">Хаах</span>
-                <XMarkIcon className="h-6 w-6 text-gray-900" aria-hidden="true" />
+                <XMarkIcon
+                  className="h-6 w-6 text-gray-900"
+                  aria-hidden="true"
+                />
               </button>
             </div>
             <div className="mt-6 flow-root">
@@ -110,6 +117,13 @@ export default function Navbar({
                   {links.map((item) => (
                     <MobileNavLink
                       key={item.id}
+                      closeMenu={closeMenu}
+                      {...item}
+                    />
+                  ))}
+                  {additionalLinks.map((item) => (
+                    <MobileNavLink
+                      key={item.url}
                       closeMenu={closeMenu}
                       {...item}
                     />
