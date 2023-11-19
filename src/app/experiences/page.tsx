@@ -66,7 +66,7 @@ export default function Experiences() {
 
   return (
     <div className="pb-12">
-      <div className="m-6">
+      <div className="container mx-auto px-5 py-3">
         <PageHeader heading="Сайн малчдын туршлагаас" />
       </div>
 

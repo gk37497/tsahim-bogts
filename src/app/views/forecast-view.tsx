@@ -37,7 +37,7 @@ export default function ForecastView({ forecasts }: Forecasts) {
   };
 
   return (
-    <div className="md:px-8 flex flex-col space-y-5 px-3">
+    <div className="flex flex-col space-y-5 container mx-auto px-2">
       <PageHeader heading={selectedCity} />
 
       <div className="block md:hidden w-full">
@@ -49,10 +49,13 @@ export default function ForecastView({ forecasts }: Forecasts) {
         return (
           <div key={i}>
             {forecast?.data.map((data, i) => (
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 rounded-xl">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 rounded-xl">
                 {data?.weather?.map((weather, i) => {
                   return (
-                    <div key={i} className="my-1 rounded-sm p-3 bg-white text-center flex flex-col space-y-5 shadow-md">
+                    <div
+                      key={i}
+                      className="my-1 rounded-sm p-3 bg-gradient-to-t from-blue-50 to-transparent text-center flex flex-col space-y-8 shadow-md relative"
+                    >
                       <div>{weather.date}</div>
                       <div>{weather.phenoDay}</div>
                       <div className="flex flex-row text-center justify-around items-center">
@@ -74,20 +77,25 @@ export default function ForecastView({ forecasts }: Forecasts) {
         );
       })}
 
-      <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
+      <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-3">
         {cityNames?.map((city, i) => (
           <div
             key={i}
-            className={`rounded-sm p-3 m-1 shadow-sm cursor-pointer border
+            className={`rounded-md overflow-hidden p-3 relative shadow-sm border cursor-pointer 
             ${
               selectedCity === city.name
-                ? "bg-blue-500 text-white"
-                : "bg-gray-50"
-            }
-            `}
+                ? "border-amber-500"
+                : "border-transparent"
+            }`}
             onClick={() => handleOnChange(city.name)}
           >
-            <span className="text-base">{city.name}</span>
+            <h6
+              className={`text-sm font-semibold ${
+                selectedCity === city.name ? "text-gray-900" : "text-gray-800"
+              }`}
+            >
+              {city.name}
+            </h6>
           </div>
         ))}
       </div>

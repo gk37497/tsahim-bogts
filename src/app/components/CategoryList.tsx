@@ -19,7 +19,7 @@ export default function CategoryList({
   filter?: string;
 }) {
   return (
-    <ul className="items-stretch space-x-5 mx-6 flex mb-4">
+    <ul className="items-stretch space-x-5 flex mb-4 container mx-auto px-4">
       <li
         className={`flex duration-200 capitalize p-4 ${
           filter === undefined
