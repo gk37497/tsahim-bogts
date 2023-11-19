@@ -11,6 +11,10 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'joyful-song-ede3e2012b.media.strapiapp.com',
+      },
+      {
+        protocol: 'https',
         hostname: 'images.pexels.com',
       }
     ],
