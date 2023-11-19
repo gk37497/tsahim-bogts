@@ -44,20 +44,20 @@ export default function Post({ data }: { data: Article }) {
   );
 
   return (
-    <article className="space-y-8 bg-white dark:text-gray-900">
+    <article className="space-y-8 bg-white text-gray-900">
       {imageUrl && (
         <Image
           src={imageUrl}
           alt="article cover image"
           width={400}
           height={400}
-          className="w-full h-96 object-cover rounded-lg"
+          className="w-full h-96 object-cover rounded-md"
         />
       )}
       <div className="space-y-6">
-        <h1 className="leading-tight text-5xl font-bold ">{title}</h1>
+        <h1 className="leading-tight text-2xl md:text-4xl font-bold">{title}</h1>
         <div className="flex flex-col items-start justify-between w-full md:flex-row md:items-center dark:text-gray-400">
-          <div className="flex items-center md:space-x-2">
+          <div className="flex items-center space-x-2">
             {authorImgUrl && (
               <Image
                 src={authorImgUrl}

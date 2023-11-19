@@ -173,7 +173,7 @@ function ArticleCardBig({ article }: { article: Article }) {
 
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-l from-black to-transparent opacity-75" />
 
-      <div className="p-6 space-y-2 absolute bottom-0 text-white right-0 text-right">
+      <div className="p-6 space-y-2 absolute bottom-0 text-white right-0 text-right max-w-md">
         <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">
           {article.attributes.title}
         </h3>
@@ -185,7 +185,7 @@ function ArticleCardBig({ article }: { article: Article }) {
         </div>
 
         <div>
-          <span className="text-xs dark:text-gray-200">
+          <span className="text-xs text-gray-200">
             {formatDate(article.attributes.publishedAt)}
           </span>
         </div>
