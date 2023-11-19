@@ -91,7 +91,7 @@ export default async function RootLayout({
           logoText={navbar.navbarLogo.logoText}
         />
 
-        <main className="bg-white text-gray-900 min-h-screen max-w-7xl mx-auto">
+        <main className="bg-white text-gray-900 min-h-screen max-w-6xl mx-auto">
           {children}
         </main>
 

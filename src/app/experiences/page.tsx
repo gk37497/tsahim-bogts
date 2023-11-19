@@ -1,8 +1,9 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
-import { fetchAPI } from "./utils/fetch-api";
-import Loader from "./components/Loader";
-import Blog from "./views/blog-list";
+import { fetchAPI } from "../utils/fetch-api";
+import Loader from "../components/Loader";
+import ExperienceList from "../views/experience-list";
+import PageHeader from "../components/PageHeader";
 
 interface Meta {
   pagination: {
@@ -12,7 +13,7 @@ interface Meta {
   };
 }
 
-export default function Home() {
+export default function Experiences() {
   const [meta, setMeta] = useState<Meta | undefined>();
   const [data, setData] = useState<any>([]);
   const [isLoading, setLoading] = useState(true);
@@ -21,12 +22,11 @@ export default function Home() {
     setLoading(true);
     try {
       const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
-      const path = `/articles`;
+      const path = `/experiences`;
       const urlParamsObject = {
         sort: { createdAt: "desc" },
         populate: {
           cover: { fields: ["url"] },
-          category: { populate: "*" },
           authorsBio: {
             populate: "*",
           },
@@ -66,7 +66,11 @@ export default function Home() {
 
   return (
     <div className="pb-12">
-      <Blog data={data}>
+      <div className="m-6">
+        <PageHeader heading="Сайн малчдын туршлагаас" />
+      </div>
+
+      <ExperienceList data={data}>
         {meta!.pagination.start + meta!.pagination.limit <
           meta!.pagination.total && (
           <div className="flex justify-center">
@@ -79,7 +83,7 @@ export default function Home() {
             </button>
           </div>
         )}
-      </Blog>
+      </ExperienceList>
     </div>
   );
 }

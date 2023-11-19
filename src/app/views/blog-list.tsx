@@ -1,6 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getStrapiMedia, formatDate } from "../utils/api-helpers";
+import PageHeader from "../components/PageHeader";
+import {
+  ArrowDownLeftIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from "@heroicons/react/24/outline";
 
 interface Article {
   id: number;
@@ -50,31 +56,28 @@ export default function PostList({
   data: Article[];
   children?: React.ReactNode;
 }) {
-  const bigArticles = articles.slice(0, 3);
-  const smallArticles = articles.slice(3);
-
   return (
     <section className="container p-6 mx-auto space-y-6 sm:space-y-12">
-      <div className="space-y-5 hidden md:block">
-        <div>
-          <ArticleCardBig article={bigArticles[0]} index={0} />
-        </div>
-        <div className="flex-row flex space-x-5">
-          <ArticleCardBig article={bigArticles[1]} index={1} />
-          <ArticleCardBig article={bigArticles[2]} index={2} />
-        </div>
+      <ArticleCardBig article={articles[0]} />
+
+      <div className="flex w-full justify-between items-center py-4 md:py-0">
+        <PageHeader heading="Шинэ мэдээнүүд" />
+        <Link
+          href="/news"
+          className="hidden md:flex flex-row items-center w-32 justify-between hover:underline"
+        >
+          <span className="text-sm">Бүгдийг үзэх</span>
+          <ChevronRightIcon className="w-4 h-4" />
+        </Link>
       </div>
 
-      <div className="justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 hidden md:grid">
-        {smallArticles.map((article) => (
-          <ArticleCard article={article} key={article.id} />
-        ))}
-      </div>
-
-      <div className="grid md:hidden justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {articles.map((article) => (
-          <ArticleCard article={article} key={article.id} />
-        ))}
+      <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {articles.map((article, index) => {
+          if (index === 0) {
+            return null;
+          }
+          return <ArticleCard article={article} key={article.id} />;
+        })}
       </div>
 
       {children && children}
@@ -96,14 +99,14 @@ function ArticleCard({ article }: { article: Article }) {
     <Link
       href={`/news/${category?.slug}/${article.attributes.slug}`}
       key={article.id}
-      className="max-w-sm mx-auto w-full h-full group hover:no-underline focus:no-underline bg-white rounded-2xl overflow-hidden shadow-lg"
+      className="max-w-sm mx-auto w-full group hover:no-underline focus:no-underline bg-white rounded-sm overflow-hidden shadow-sm hover:bg-gray-100 duration-200"
     >
       {imageUrl && (
         <Image
           alt="presentation"
           width="240"
           height="240"
-          className="object-cover w-full h-44 "
+          className="object-cover w-full h-52 group-hover:scale-105 group-focus:scale-105 duration-200"
           src={imageUrl}
         />
       )}
@@ -118,7 +121,7 @@ function ArticleCard({ article }: { article: Article }) {
           />
         )}
 
-        <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">
+        <h3 className="text-xl font-semibold group-hover:underline group-focus:underline duration-200">
           {article.attributes.title}
         </h3>
 
@@ -138,57 +141,51 @@ function ArticleCard({ article }: { article: Article }) {
             </span>
           )}
         </div>
-        <p className="py-4">{article.attributes.description}</p>
+        <p className="py-4 text-sm">{article.attributes.description}</p>
       </div>
     </Link>
   );
 }
 
-function ArticleCardBig({
-  article,
-  index,
-}: {
-  article: Article;
-  index: number;
-}) {
+function ArticleCardBig({ article }: { article: Article }) {
   const imageUrl = getStrapiMedia(
-    article.attributes.cover.data?.attributes.url
+    article.attributes.cover?.data?.attributes.url
   );
 
-  const category = article.attributes.category.data?.attributes;
+  const category = article.attributes.category?.data?.attributes;
 
   return (
     <Link
       href={`/news/${category?.slug}/${article.attributes.slug}`}
       key={article.id}
-      className={`hover:no-underline overflow-hidden focus:no-underline rounded-lg shadow-lg flex flex-row w-full ${
-        index === 0 && "lg:h-[500px]"
-      }`}
+      className={`hover:no-underline overflow-hidden group focus:no-underline rounded-md shadow-lg flex flex-row w-full h-[400px] relative`}
     >
-      <div className="w-3/5 relative">
+      <div className="w-full relative">
         {imageUrl && (
           <Image
             alt="presentation"
-            className={`object-cover`}
+            className={`object-cover group-hover:scale-105 group-focus:scale-105 duration-200`}
             src={imageUrl}
             fill
           />
         )}
       </div>
 
-      <div className="p-6 space-y-2 relative w-2/5">
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-l from-black to-transparent opacity-75" />
+
+      <div className="p-6 space-y-2 absolute bottom-0 text-white right-0 text-right">
         <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">
           {article.attributes.title}
         </h3>
 
         <div className="py-1">
-          <span className="rounded-md py-1 bg-gray-200 px-1 text-sm shadow-md">
+          <span className="rounded-md py-1 bg-gray-200 px-2 text-sm shadow-md text-black">
             {category.name}
           </span>
         </div>
 
-        <div className="flex justify-between items-center">
-          <span className="text-xs dark:text-gray-400">
+        <div>
+          <span className="text-xs dark:text-gray-200">
             {formatDate(article.attributes.publishedAt)}
           </span>
         </div>

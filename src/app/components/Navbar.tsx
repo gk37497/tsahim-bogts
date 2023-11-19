@@ -24,7 +24,7 @@ function NavLink({ url, text }: NavLink) {
     <li className="flex">
       <Link
         href={url}
-        className={`flex items-center mx-4 -mb-1 border-b-2 dark:border-transparent ${
+        className={`flex items-center font-semibold mx-4 -mb-1 border-b-2 dark:border-transparent ${
           path === url && "dark:text-[#0245A3] dark:border-[#0245A3]"
         }}`}
       >
@@ -68,7 +68,7 @@ export default function Navbar({
     setMobileMenuOpen(false);
   };
   return (
-    <div className="py-4 text-gray-900 max-w-7xl mx-auto">
+    <div className="py-4 text-gray-900 max-w-6xl mx-auto">
       <div className="container flex justify-between h-16 mx-auto px-0 sm:px-6">
         <Logo src={logoUrl}>
           {logoText && <h2 className="text-2xl font-bold">{logoText}</h2>}
