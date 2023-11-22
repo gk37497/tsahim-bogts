@@ -5,6 +5,8 @@ import Logo from "./Logo";
 import { CgWebsite } from "react-icons/cg";
 import { FaDiscord } from "react-icons/fa";
 import { AiFillTwitterCircle, AiFillYoutube } from "react-icons/ai";
+import { FooterLinks } from "../utils/constants";
+import Image from "next/image";
 
 interface FooterLink {
   id: number;
@@ -51,19 +53,16 @@ function CategoryLink({ attributes }: CategoryLink) {
   );
 }
 
-function RenderSocialIcon({ social }: { social: string | undefined }) {
-  switch (social) {
-    case "WEBSITE":
-      return <CgWebsite />;
-    case "TWITTER":
-      return <AiFillTwitterCircle />;
-    case "YOUTUBE":
-      return <AiFillYoutube />;
-    case "DISCORD":
-      return <FaDiscord />;
-    default:
-      return null;
-  }
+function RenderSocialIcon({ social }: { social: string }) {
+  return (
+    <Image
+      src={social}
+      width={150}
+      height={70}
+      style={{objectFit: 'contain'}}
+      alt="social"
+    />
+  );
 }
 
 export default function Footer({
@@ -81,7 +80,6 @@ export default function Footer({
   legalLinks: Array<FooterLink>;
   socialLinks: Array<FooterLink>;
 }) {
-
   return (
     <footer className="py-6 bg-gray-50 dark:text-gray-900">
       <div className="container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50 max-w-6xl">
@@ -100,38 +98,29 @@ export default function Footer({
             </ul>
           </div>
         </div>
-        <div className="grid justify-center pt-6 lg:justify-between">
-          <div className="flex">
-            <span className="mr-2 text-sm">
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-6">
+          {FooterLinks.map((link) => {
+            return (
+              <a
+                key={link.title}
+                rel="noopener noreferrer"
+                href={link.link}
+                title={link.title}
+                target={"_blank"}
+                className="flex items-center justify-center relative"
+              >
+                <RenderSocialIcon social={link.logo} />
+              </a>
+            );
+          })}
+        </div>
+
+        <div className="grid justify-center border-none pb-4 pt-8 md:pt-0">
+          <div className="flex items-center justify-center w-full">
+            <span className="text-sm">
               ©{new Date().getFullYear()} Бүх эрх хуулиар хамгаалагдсан.
             </span>
-            <ul className="flex text-sm">
-              {legalLinks.map((link: FooterLink) => (
-                <Link
-                  href={link.url}
-                  className="text-gray-600 hover:text-gray-300 mr-2"
-                  key={link.id}
-                >
-                  {link.text}
-                </Link>
-              ))}
-            </ul>
-          </div>
-          <div className="flex justify-center pt-4 space-x-4 lg:pt-0 lg:col-end-13">
-            {socialLinks.map((link: FooterLink) => {
-              return (
-                <a
-                  key={link.id}
-                  rel="noopener noreferrer"
-                  href={link.url}
-                  title={link.text}
-                  target={link.newTab ? "_blank" : "_self"}
-                  className="flex items-center justify-center w-10 h-10 rounded-full dark:bg-gray-200 dark:text-gray-900"
-                >
-                  <RenderSocialIcon social={link.social} />
-                </a>
-              );
-            })}
           </div>
         </div>
       </div>
