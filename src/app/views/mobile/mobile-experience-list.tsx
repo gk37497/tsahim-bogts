@@ -63,7 +63,7 @@ export function ExperienceCard({ article }: { article: Experience }) {
     <Link
       href={`/mobile/experiences/${article.attributes.slug}`}
       key={article.id}
-      className="w-full focus:no-underline bg-white rounded-sm shadow-sm border border-gray-300"
+      className="w-full mt-16 focus:no-underline bg-white rounded-sm shadow-sm border border-gray-300"
     >
       {imageUrl && (
         <Image

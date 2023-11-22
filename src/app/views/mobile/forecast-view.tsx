@@ -38,7 +38,7 @@ export default function MobileForecastView({ forecasts }: Forecasts) {
   };
 
   return (
-    <div className="flex flex-col container mx-auto pb-16">
+    <div className="flex flex-col container mx-auto py-16">
       <MobileHeader title={selectedCity} />
 
       <div className="flex md:hidden w-full mb-5">

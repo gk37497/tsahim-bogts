@@ -17,7 +17,7 @@ export default function MobileHeader({ title }: { title: string }) {
   const isBackable = !unBackableRoutes.includes(pathname);
 
   return (
-    <div className="h-16 p-1 mb-3 flex items-center justify-center bg-white sticky top-0 z-[500] border-b -mx-4 -mt-3">
+    <div className="h-16 flex items-center justify-center bg-white fixed w-full z-[500] border-b top-0 -mx-3">
       {isBackable && (
         <ChevronLeftIcon
           className="w-8 h-8 absolute left-2"

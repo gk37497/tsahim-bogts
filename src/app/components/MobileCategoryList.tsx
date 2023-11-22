@@ -20,7 +20,7 @@ export default function MobileCategoryList({
   filter?: string;
 }) {
   return (
-    <ul className="space-x-2 flex mb-4 container mx-auto justify-around">
+    <ul className="space-x-2 flex mb-4 container mx-auto justify-around mt-16">
       {categories?.slice(0, 2)?.map((category, i) => (
         <Link
           href={`/mobile/news/${category.attributes.slug}`}

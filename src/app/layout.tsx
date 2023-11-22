@@ -58,6 +58,7 @@ export async function generateMetadata({
       width: "device-width",
       initialScale: 1,
       maximumScale: 1,
+      minimumScale: 1,
     },
   };
 }
