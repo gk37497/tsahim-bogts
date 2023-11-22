@@ -1,6 +1,7 @@
 import MobileCategoryList from "@/app/components/MobileCategoryList";
 import { fetchAPI } from "@/app/utils/fetch-api";
 import MobileBlogList from "@/app/views/mobile/blog-list";
+import MobileHeader from "@/app/views/mobile/mobile-header";
 
 async function fetchPostsByCategory(filter: string) {
   try {
@@ -77,6 +78,12 @@ export default async function CategoryRoute({
   };
   return (
     <div>
+      <MobileHeader
+        title={
+          categories.find((c) => c.attributes.slug === filter)?.attributes
+            .name || ""
+        }
+      />
       <MobileCategoryList categories={categories} filter={filter} />
       <MobileBlogList data={data} />
     </div>

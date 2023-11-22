@@ -2,6 +2,7 @@
 import MobileLoader from "@/app/components/MobileLoader";
 import { fetchAPI } from "@/app/utils/fetch-api";
 import MobileExperienceList from "@/app/views/mobile/mobile-experience-list";
+import MobileHeader from "@/app/views/mobile/mobile-header";
 import { useCallback, useEffect, useState } from "react";
 
 interface Meta {
@@ -65,6 +66,7 @@ export default function Experiences() {
 
   return (
     <div className="pb-12">
+      <MobileHeader title="Сайн малчдын туршлага" />
       <MobileExperienceList data={data}>
         {meta!.pagination.start + meta!.pagination.limit <
           meta!.pagination.total && (

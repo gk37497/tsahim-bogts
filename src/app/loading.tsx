@@ -1,5 +1,5 @@
-import Loader from './components/Loader';
+import MobileLoader from "./components/MobileLoader";
 
 export default function RootLoading() {
-    return <Loader />;
+  return <MobileLoader />;
 }

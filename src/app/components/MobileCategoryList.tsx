@@ -22,21 +22,24 @@ export default function MobileCategoryList({
   return (
     <ul className="space-x-2 flex mb-4 container mx-auto justify-around">
       {categories?.slice(0, 2)?.map((category, i) => (
-        <li
-          className={`flex rounded-sm items-center space-x-3 uppercase p-2 w-full justify-center ${
-            category.attributes.slug === filter
-              ? "text-gray-100 bg-gray-800"
-              : "text-black bg-gray-200"
-          }`}
+        <Link
+          href={`/mobile/news/${category.attributes.slug}`}
           key={category.id}
+          className="w-full"
         >
-          {i === 1 && <NewspaperIcon className="w-5 h-5" />}
-          {i === 0 && <VideoCameraIcon className="w-5 h-5" />}
+          <li
+            className={`flex rounded-sm items-center space-x-3 uppercase p-2 w-full justify-center ${
+              category.attributes.slug === filter
+                ? "text-gray-100 bg-gray-800"
+                : "text-black bg-gray-200"
+            }`}
+          >
+            {i === 1 && <NewspaperIcon className="w-5 h-5" />}
+            {i === 0 && <VideoCameraIcon className="w-5 h-5" />}
 
-          <Link href={`/mobile/news/${category.attributes.slug}`}>
             <h2>{category.attributes.name}</h2>
-          </Link>
-        </li>
+          </li>
+        </Link>
       ))}
     </ul>
   );

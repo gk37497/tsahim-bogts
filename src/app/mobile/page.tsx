@@ -3,6 +3,7 @@ import MobileCategoryList from "@/app/components/MobileCategoryList";
 import { fetchAPI } from "@/app/utils/fetch-api";
 import MobileBlogList from "@/app/views/mobile/blog-list";
 import { useCallback, useEffect, useState } from "react";
+import MobileHeader from "../views/mobile/mobile-header";
 
 interface Meta {
   pagination: {
@@ -85,6 +86,7 @@ export default function News() {
 
   return (
     <div className="pb-12">
+      <MobileHeader title="Мэдээ мэдээлэл" />
       <MobileCategoryList categories={categories} />
       <MobileBlogList data={data}>
         {meta!.pagination.start + meta!.pagination.limit <
