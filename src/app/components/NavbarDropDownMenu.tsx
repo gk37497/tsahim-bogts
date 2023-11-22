@@ -66,8 +66,7 @@ export default function NavbarDropDownMenu() {
               {additionalLinks.map((item, i) => {
                 return (
                   <Menu.Item key={i}>
-                    {({ active }) => (
-                      <a
+                    <a
                         href={item.url}
                         className={`${
                           pathname === item.url
@@ -77,7 +76,6 @@ export default function NavbarDropDownMenu() {
                       >
                         <span>{item.text}</span>
                       </a>
-                    )}
                   </Menu.Item>
                 );
               })}

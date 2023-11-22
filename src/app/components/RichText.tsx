@@ -12,7 +12,10 @@ export default function RichText({ data }: RichTextProps) {
   // TODO: STYLE THE MARKDOWN
   return (
     <section className="rich-text py-6 bg-white text-gray-900">
-      <Markdown children={data.content || data.body} remarkPlugins={[remarkGfm]} />
+      <Markdown
+        children={data.content || data.body}
+        remarkPlugins={[remarkGfm]}
+      />
     </section>
   );
 }

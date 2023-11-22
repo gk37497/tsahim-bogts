@@ -4,37 +4,36 @@
 @import "react-slideshow-image/dist/styles.css";
 
 body {
-  @apply bg-white
+  @apply bg-white;
 }
-
 
 /******************************************* 
   Rich Text Styles
-*******************************************/ 
+*******************************************/
 
 /* Headers */
 .rich-text h1 {
-  @apply text-3xl font-bold mb-4 text-black;
+  @apply text-2xl font-semibold mb-4 text-black;
 }
 
 .rich-text h2 {
-  @apply text-2xl font-bold mb-4 text-black;
+  @apply text-xl font-semibold mb-4 text-black;
 }
 
 .rich-text h3 {
-  @apply text-xl font-bold mb-4 text-black;
+  @apply text-lg font-semibold mb-4 text-black;
 }
 
 .rich-text h4 {
-  @apply text-lg font-bold mb-4 text-black;
+  @apply text-base font-semibold mb-4 text-black;
 }
 
 .rich-text h5 {
-  @apply text-base font-bold mb-4 text-black;
+  @apply text-sm font-semibold mb-4 text-black;
 }
 
 .rich-text h6 {
-  @apply text-sm font-bold mb-4 text-violet-200;
+  @apply text-sm font-semibold mb-4 text-violet-200;
 }
 
 /* Horizontal rules */
@@ -53,7 +52,7 @@ body {
 
 /* Emphasis */
 .rich-text strong {
-  @apply font-bold;
+  @apply font-semibold;
 }
 
 .rich-text em {
@@ -122,10 +121,9 @@ body {
   @apply bg-yellow-100 border-yellow-500 text-yellow-700 px-4 py-2 rounded-lg mb-4;
 }
 
-
 /******************************************* 
   React Slideshow Styles
-*******************************************/   
+*******************************************/
 
 .react-slideshow-container [aria-label="Previous Slide"] {
   margin-left: 1rem;

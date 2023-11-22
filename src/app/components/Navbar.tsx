@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import NavbarDropDownMenu, { additionalLinks } from "./NavbarDropDownMenu";
 
 interface NavLink {
@@ -80,13 +80,13 @@ export default function Navbar({
             {links.map((item: NavLink, i) => {
               if (i === 2) {
                 return (
-                  <>
-                    <NavbarDropDownMenu key={i} />
-                    <NavLink key={item.id} {...item} />
-                  </>
+                  <Fragment key={i}>
+                    <NavbarDropDownMenu />
+                    <NavLink {...item} />
+                  </Fragment>
                 );
               }
-              return <NavLink key={item.id} {...item} />;
+              return <NavLink key={i} {...item} />;
             })}
           </ul>
         </div>
