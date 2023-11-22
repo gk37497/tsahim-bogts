@@ -30,8 +30,8 @@ export default function MobileCategoryList({
           }`}
           key={category.id}
         >
-          {i === 0 && <NewspaperIcon className="w-5 h-5" />}
-          {i === 1 && <VideoCameraIcon className="w-5 h-5" />}
+          {i === 1 && <NewspaperIcon className="w-5 h-5" />}
+          {i === 0 && <VideoCameraIcon className="w-5 h-5" />}
 
           <Link href={`/mobile/news/${category.attributes.slug}`}>
             <h2>{category.attributes.name}</h2>
