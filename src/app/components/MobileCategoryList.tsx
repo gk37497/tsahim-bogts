@@ -37,7 +37,7 @@ export default function MobileCategoryList({
             {i === 1 && <NewspaperIcon className="w-5 h-5" />}
             {i === 0 && <VideoCameraIcon className="w-5 h-5" />}
 
-            <h2>{category.attributes.name}</h2>
+            {/* <h2>{category.attributes.name}</h2> */}
           </li>
         </Link>
       ))}
