@@ -63,7 +63,7 @@ export async function generateMetadata({
   };
 }
 
-export const primaryFont = Nunito({
+const primaryFont = Nunito({
   weight: ["400", "500", "600", "700", "800"],
   subsets: ["latin"],
   display: "swap",
