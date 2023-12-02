@@ -52,7 +52,6 @@ export async function generateStaticParams() {
     },
     options
   );
-
   return articleResponse.data.map(
     (article: {
       attributes: {

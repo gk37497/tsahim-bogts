@@ -15,6 +15,10 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'whale-app-rx5uf.ondigitalocean.app',
+      },
+      {
+        protocol: 'https',
         hostname: 'images.pexels.com',
       }
     ],
