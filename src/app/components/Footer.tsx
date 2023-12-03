@@ -16,6 +16,13 @@ interface FooterLink {
   social?: string;
 }
 
+const appDownloadLink:FooterLink ={
+  id: 1,
+  url: "https://drive.google.com/file/d/1wKCgqVvFssRC8D4RXJUUB6iFNrfGDj_K/view?usp=drive_link",
+  newTab: true,
+  text: "Апп татах",
+}
+
 interface CategoryLink {
   id: string;
   attributes: {
@@ -92,7 +99,7 @@ export default function Footer({
           <div className="col-span-full text-right md:col-span-6">
             <p className="pb-1 font-medium">Хуудсууд</p>
             <ul>
-              {menuLinks.map((link: FooterLink) => (
+              {[appDownloadLink, ...menuLinks].map((link: FooterLink) => (
                 <FooterLink key={link.id} {...link} />
               ))}
             </ul>
