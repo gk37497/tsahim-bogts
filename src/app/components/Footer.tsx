@@ -16,12 +16,21 @@ interface FooterLink {
   social?: string;
 }
 
-const appDownloadLink:FooterLink ={
-  id: 1,
-  url: "https://drive.google.com/file/d/1wKCgqVvFssRC8D4RXJUUB6iFNrfGDj_K/view?usp=drive_link",
-  newTab: true,
-  text: "Апп татах",
-}
+const appDownloadLink:FooterLink[] = [
+  {
+    id: 21,
+    url: "https://drive.google.com/file/d/1wKCgqVvFssRC8D4RXJUUB6iFNrfGDj_K/view?usp=drive_link",
+    newTab: true,
+    text: "Апп татах",
+  },
+  {
+    id: 20,
+    url: "https://tsakhimbogts-strapi-93db2.ondigitalocean.app/admin",
+    newTab: true,
+    text: "Админ",
+  },
+
+]
 
 interface CategoryLink {
   id: string;
@@ -99,7 +108,7 @@ export default function Footer({
           <div className="col-span-full text-right md:col-span-6">
             <p className="pb-1 font-medium">Хуудсууд</p>
             <ul>
-              {[appDownloadLink, ...menuLinks].map((link: FooterLink) => (
+              {[...menuLinks,...appDownloadLink].map((link: FooterLink) => (
                 <FooterLink key={link.id} {...link} />
               ))}
             </ul>
