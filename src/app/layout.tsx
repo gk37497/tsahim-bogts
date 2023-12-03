@@ -54,12 +54,12 @@ export async function generateMetadata({
       title: "Tsahim Bogts",
       statusBarStyle: "black-translucent",
     },
-    viewport: {
-      width: "device-width",
-      initialScale: 1,
-      maximumScale: 1,
-      minimumScale: 1,
-    },
+    // viewport: {
+    //   width: "device-width",
+    //   initialScale: 1,
+    //   maximumScale: 1,
+    //   minimumScale: 1,
+    // },
   };
 }
 
