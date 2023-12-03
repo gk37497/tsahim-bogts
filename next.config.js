@@ -15,7 +15,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'whale-app-rx5uf.ondigitalocean.app',
+        hostname: 'tsakhimbogts-strapi-93db2.ondigitalocean.app',
       },
       {
         protocol: 'https',
