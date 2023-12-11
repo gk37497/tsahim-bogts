@@ -1,12 +1,9 @@
 "use client";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
-import Logo from "./Logo";
-import { CgWebsite } from "react-icons/cg";
-import { FaDiscord } from "react-icons/fa";
-import { AiFillTwitterCircle, AiFillYoutube } from "react-icons/ai";
-import { FooterLinks } from "../utils/constants";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { FooterLinks } from "../utils/constants";
+import Logo from "./Logo";
 
 interface FooterLink {
   id: number;
@@ -16,10 +13,10 @@ interface FooterLink {
   social?: string;
 }
 
-const appDownloadLink:FooterLink[] = [
+const appDownloadLink: FooterLink[] = [
   {
     id: 21,
-    url: "https://drive.google.com/file/d/1wKCgqVvFssRC8D4RXJUUB6iFNrfGDj_K/view?usp=drive_link",
+    url: "https://drive.google.com/file/d/1un3y-xs9zUFv_QMHWw-0N9XHmabcaUjK/view?usp=drive_link",
     newTab: true,
     text: "Апп татах",
   },
@@ -29,8 +26,7 @@ const appDownloadLink:FooterLink[] = [
     newTab: true,
     text: "Админ",
   },
-
-]
+];
 
 interface CategoryLink {
   id: string;
@@ -75,7 +71,7 @@ function RenderSocialIcon({ social }: { social: string }) {
       src={social}
       width={150}
       height={70}
-      style={{objectFit: 'contain'}}
+      style={{ objectFit: "contain" }}
       alt="social"
     />
   );
@@ -108,7 +104,7 @@ export default function Footer({
           <div className="col-span-full text-right md:col-span-6">
             <p className="pb-1 font-medium">Хуудсууд</p>
             <ul>
-              {[...menuLinks,...appDownloadLink].map((link: FooterLink) => (
+              {[...menuLinks, ...appDownloadLink].map((link: FooterLink) => (
                 <FooterLink key={link.id} {...link} />
               ))}
             </ul>
